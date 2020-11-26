@@ -9,6 +9,8 @@ package tcairlines;
  *
  * @author JRios15_17
  */
-public class TCAirplaneFull {
-    
+public class TCAirplaneFull extends Exception {
+    public TCAirplaneFull(String errorMessage){
+        super("The Airplane is Full!");
+    }
 }

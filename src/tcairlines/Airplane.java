@@ -12,7 +12,6 @@ package tcairlines;
 public class Airplane {
     private String departCity;
     private String destination;
-    private int flightNum;
     private String departDate;
     private String departTime;
     private String arrivalTime;
@@ -23,7 +22,6 @@ public class Airplane {
         departCity="";
         destination="";
         arrivalTime="";
-        flightNum=-1;
         departDate="";
         departTime="";
         airplaneName="";
@@ -56,20 +54,6 @@ public class Airplane {
      */
     public void setDestination(String destination) {
         this.destination = destination;
-    }
-
-    /**
-     * @return the flightNum
-     */
-    public int getFlightNum() {
-        return flightNum;
-    }
-
-    /**
-     * @param flightNum the flightNum to set
-     */
-    public void setFlightNum(int flightNum) {
-        this.flightNum = flightNum;
     }
 
     /**
@@ -130,7 +114,7 @@ public class Airplane {
     
     @Override
     public String toString(){
-        return 
+        return "Airplane Name:"+airplaneName+"\n"+"Depart Date: "+departDate+"\n"+"Departing: "+departCity+"\n"+"Depart Time: "+departTime+"\n"+"Destination: "+destination+"\n"+"Arrive at:"+arrivalTime+"\n";
     }
 
     /**
@@ -145,5 +129,27 @@ public class Airplane {
      */
     public void setArrivalTime(String arrivalTime) {
         this.arrivalTime = arrivalTime;
+    }
+    public boolean checkFull(int seatNum){
+        int count =0;
+        if (allSeats[seatNum] == 1){
+            System.out.print("Seat not Available");
+         for (int i =0; i<allSeats.length; i++){
+            int hold=allSeats[i];
+            if (hold != 1){
+                break;
+            }
+            count ++;
+            if (count >= 30){
+                System.out.print("Plane full");
+                return true;
+            }
+         }
+        }
+        return false;
+    }
+    
+    public void removeSeat(int seatNum){
+        allSeats[seatNum]=0;
     }
 }
